@@ -20,6 +20,27 @@ def create
     end
 end
 
+def destroy
+    @product=Product.find(params[:id])
+    @product.destroy
+    respond_to do |format|
+        format.json{ render json: {success:true},status: :ok }
+    end
+end
+
+def update
+    @product=Product.find(params[:id])
+    respond_to do |format|
+        format.json{
+            if @product.update(get_params) 
+                render json: {success:@product},status: :ok
+            else
+                render json: {success:false},status: :error
+            end
+        }
+    end
+end
+
 private 
     def get_params
         params.require(:product).permit(:name,:cost,:orgin,:note)

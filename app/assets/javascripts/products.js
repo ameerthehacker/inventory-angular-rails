@@ -7,7 +7,7 @@
     .controller('products_controller',products_controller);
 
     function products_controller($scope,$resource){
-        var Product=$resource('/products/:id.json');
+        var Product=$resource('/products/:id.json',{},{update:{method:'PUT'}});
         $scope.products=Product.query();
         $scope.btn_add_product_click=function(evt){
             var new_product={name:$scope.product_name,cost:$scope.product_cost,quantity:$scope.product_quantity,orgin:$scope.product_orgin,note:$scope.product_note};
@@ -21,7 +21,7 @@
                     $scope.product_note="";
                 }
                 else{
-                    alert("error");
+                    
                 }
             });
         };
@@ -34,5 +34,17 @@
            });
             return total;
         }
+        $scope.btn_delete_product_click=function(product){
+            Product.delete({id:product.id},function(response){
+                console.log(response);
+                var product_index=$scope.products.indexOf(product);
+                $scope.products.splice(product_index,1);
+            });
+        };
+        $scope.btn_update_product_click=function(product){
+            Product.update({id:product.id},product,function(response){
+                console.log("ok");
+            });
+        };
     }
 })();

@@ -21,6 +21,8 @@
                         <th>Quantity</th>
                         <th>Orgin</th>       
                         <th>Notes</th>
+                        <th>.</th>
+                        <th>.</th>                        
                     </tr>                                         
                 </thead>
                 <tbody>
@@ -30,7 +32,9 @@
                         <td>{{product.cost}}$</td>
                         <td><input type="text" class="form-control"  ng-model="product.quantity"/></td>
                         <td>{{product.orgin}}</td>
-                        <td><input type="text" class="form-control" value="{{product.note}}"/></td>                                                            
+                        <td><input type="text" class="form-control" value="{{product.note}}" ng-model="product.note"/></td>
+                        <td><input type="button" class="form-control btn btn-success" ng-click="btn_update_product_click(product)" value="Update"></td>                                                                                                                                                   
+                        <td><input type="button" class="form-control btn btn-danger" ng-click="btn_delete_product_click(product)" value="Delete"></td>
                     </tr>
                 </tbody>
                 <tfoot>
@@ -41,6 +45,8 @@
                         <th>Quantity</th>
                         <th>Orgin</th>       
                         <th>Notes</th>
+                        <th>.</th>
+                        <th>.</th>                        
                     </tr>                                         
                 </tfoot>
             </table>
