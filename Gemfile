@@ -22,6 +22,8 @@ gem 'angularjs-rails', '~> 1.5', '>= 1.5.8'
 
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
+gem 'angularjs-rails-resource', '~> 2.2', '>= 2.2.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
